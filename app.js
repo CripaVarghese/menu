@@ -9,7 +9,7 @@ const shakes=document.getElementById("shakes");
 const arrays=[
     {
         id:1,
-        category:1,
+        type:"Breakfast",
         image:'images/pancakes.jpeg',
         name:'Buttermilk Pancakres1',
         price:'$15.99',
@@ -18,7 +18,7 @@ const arrays=[
     },
     {
         id:2,
-        category:2,
+        type:"Lunch",
         image:'images/milkshake.jpeg',
         name:'Buttermilk Pancakres2',
         price:'$15.99',
@@ -27,7 +27,7 @@ const arrays=[
     },
     {
         id:3,
-        category:3,
+        type:"Shakes",
         image:'images/godzilla.jpeg',
         name:'Buttermilk Pancakres3',
         price:'$15.99',
@@ -36,7 +36,7 @@ const arrays=[
     },
     {
         id:4,
-        category:1,
+        type:"Breakfast",
         image:'images/oreo dream.jpeg',
         name:'Buttermilk Pancakres4',
         price:'$15.99',
@@ -45,7 +45,7 @@ const arrays=[
     },
     {
         id:5,
-        category:2,
+        type:"Lunch",
         image:'images/godzilla.jpeg',
         name:'Buttermilk Pancakres5',
         price:'$15.99',
@@ -54,7 +54,7 @@ const arrays=[
     },
     {
         id:6,
-        category:3,
+        type:"Shakes",
         image:'images/godzilla.jpeg',
         name:'Buttermilk Pancakres6',
         price:'$15.99',
@@ -63,13 +63,13 @@ const arrays=[
     }
 ];
 
-// all.addEventListener("click",() => {});
 
-arrays.map((array) => {
+
+var all_array=arrays.map((array) => {
 
     
    
-    // lunch.addEventListener("click",() => {});
+    // 
     // shakes.addEventListener("click",() => {});
     
     // const items=document.querySelector(".items");
@@ -124,39 +124,195 @@ arrays.map((array) => {
                                     const info_textNode=document.createTextNode(array.info);
                                     item_info.appendChild(info_textNode);
 
-             breakfast.addEventListener("click",() => {
-                 
-                    items.innerHTML=arrays[0];
-                            
-                 
-             });
-                                    
-                        
 
-            
-            
-          
-
-        
+                      
            
-
-               
-       
-
-  
-
+                                
 
 });
 
 
+
+
+
+breakfast.addEventListener("click",() => {
+    const images=document.querySelector(".item_image")
+                 
+    let filterArray = arrays.filter(function(arrayNew) {    
+                return arrayNew.type  === "Breakfast"
+                
+            });
+            console.log(filterArray);
+
+            filterArray.map((filter,index) => {
+                
+            items.innerHTML = filter.image;  
+            });
+                
+});  
+
+lunch.addEventListener("click",() => {
+    let filterArray = arrays.filter(function(arrayNew) {    
+        return arrayNew.type === "Lunch"
+        
+    });
+    console.log(filterArray);
+
+    filterArray.map((filter,index) => {
+        
+    items.innerHTML = filter;  
+    });
+});
+
+
+shakes.addEventListener("click",() => {
+    // let filterArray = arrays.filter(function(arrayNew) {    
+    //     return arrayNew.type === "Shakes"
+        
+    // });
+    // console.log(filterArray);
+
+    // filterArray.map((filter,index) => {
+        
+    // items.innerHTML = filter.image;  
+    // });
+
+    let filterArray = arrays.filter(function(array) {
+            return array.type === "Shakes"
+          })
+          .map(function(array,index) {
+              console.log(array);
+              items.innerHTML=array;
+              console.log(array);
+         
+           return array;
+          });
+          
+          let filterOutput = document.createElement('p');
+          filterOutput.innerHTML = filterArray
+          console.log(filterArray);
+          items.appendChild(filterOutput);                                    
+                         
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// arrays.map((array,index) => {
+//     console.log(filterArray);
+// items.innerHTML = filterArray;  
+// });
+
+
+
+
+
+// arrays.map((arrayss)=> {
+//     let filterArray = arrays.filter(function(arrayss) {
+//         return arrayss.category  === 2
+        
+//     })
+//     // items.innerHTML = filterArray;
+//     items.innerHTML=filterArray[index].image;
+// console.log(filterArray);
+// });   
+
+
+
+// var dataString=JSON.stringify(arrays);
+// console.log(dataString);
+// items.innerHTML=dataString;
+
+// items.innerHTML=all_array;
+// items.style.display="none";
+
+// all.addEventListener("click",() => {
+//     items.innerHTML=all_array;
+
+//     items.style.display="block";
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 // let filterArray = arrays.filter(function(array) {
-//     return array.description === 2
+//     return array.category  === 2
 //   })
-//   .map(function(array) {
-//     return array.name;
+//   .map(function(array,index) {
+//       console.log(array);
+//       items.innerHTML=array.name;
+//     //   console.log(JSON.stringify(array));
+
+//    return array;
 //   });
   
 //   let filterOutput = document.createElement('p');
 //   filterOutput.innerHTML = filterArray
 
-//   items.appendChild(filterOutput);
+//   items.appendChild(filterOutput);                                    
+                 
+// });
+
