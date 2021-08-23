@@ -63,256 +63,157 @@ const arrays=[
     }
 ];
 
-
-
-var all_array=arrays.map((array) => {
-
-    
-   
-    // 
-    // shakes.addEventListener("click",() => {});
-    
-    // const items=document.querySelector(".items");
-    // // item
-    //     // item_image // src
-
-    //     // item_details
-    //             // name_price
-    //                     // item_name
-    //                     // item_price
-    //             // item_info
-
-    const item=document.createElement("div");
-    item.className="item";
-    items.appendChild(item);
-
-            const item_image=document.createElement("div");
-            item_image.className="item_image";
-            item.appendChild(item_image);
-
-                    const img=document.createElement("img");
-                    img.src=array.image;
-                    item_image.appendChild(img);
-        
-            const item_details=document.createElement("div");
-            item_details.className="item_details";
-            item.appendChild(item_details);
-    
-                    const name_price=document.createElement("div");
-                    name_price.className="name_price";
-                    item_details.appendChild(name_price);
-    
-                            const item_name=document.createElement("div");
-                            item_name.className="item_name";
-                            name_price.appendChild(item_name);
-
-                                    const name_textNode=document.createTextNode(array.name);
-                                    item_name.appendChild(name_textNode);
-
-
-                            const item_price=document.createElement("div");
-                            item_price.className="item_price";
-                            name_price.appendChild(item_price);
-
-                                    const price_textNode=document.createTextNode(array.price);
-                                    item_price.appendChild(price_textNode);
-
-                    const item_info=document.createElement("div");
-                    item_info.className="item_info";
-                    item_details.appendChild(item_info);
-
-                                    const info_textNode=document.createTextNode(array.info);
-                                    item_info.appendChild(info_textNode);
-
-
-                      
-           
-                                
-
-});
-
-
-
-
-
-breakfast.addEventListener("click",() => {
-    const images=document.querySelector(".item_image")
-                 
+all.addEventListener("click",() => {
+                     
     let filterArray = arrays.filter(function(arrayNew) {    
-                return arrayNew.type  === "Breakfast"
-                
-            });
-            console.log(filterArray);
+        return (arrayNew.type === "Breakfast" &&  "Lunch"  && "Shakes" )         
+    });
 
-            filterArray.map((filter,index) => {
-                
-            items.innerHTML = filter.image;  
-            });
+    items.innerHTML= filterArray.map((itemm,index) => {                
+        return renderItem(itemm);
+    });
                 
 });  
 
-lunch.addEventListener("click",() => {
+
+breakfast.addEventListener("click",() => {
+                     
     let filterArray = arrays.filter(function(arrayNew) {    
-        return arrayNew.type === "Lunch"
-        
+        return arrayNew.type === "Breakfast"                
     });
-    console.log(filterArray);
 
-    filterArray.map((filter,index) => {
-        
-    items.innerHTML = filter;  
+    items.innerHTML= filterArray.map((itemm,index) => {                
+        return renderItem(itemm);
     });
+                
+});  
+lunch.addEventListener("click",() => {
+    
+    let filterArray = arrays.filter(function(arrayNew) {    
+        return arrayNew.type === "Lunch"        
+    });
+    
+    items.innerHTML = filterArray.map((itemm,index) => {
+        return renderItem(itemm);         
+    });
+
 });
-
 
 shakes.addEventListener("click",() => {
-    // let filterArray = arrays.filter(function(arrayNew) {    
-    //     return arrayNew.type === "Shakes"
-        
-    // });
-    // console.log(filterArray);
 
-    // filterArray.map((filter,index) => {
-        
-    // items.innerHTML = filter.image;  
-    // });
-
-    let filterArray = arrays.filter(function(array) {
-            return array.type === "Shakes"
-          })
-          .map(function(array,index) {
-              console.log(array);
-              items.innerHTML=array;
-              console.log(array);
-         
-           return array;
-          });
-          
-          let filterOutput = document.createElement('p');
-          filterOutput.innerHTML = filterArray
-          console.log(filterArray);
-          items.appendChild(filterOutput);                                    
-                         
+    let filterArray = arrays.filter(function(arrayNew) {    
+        return arrayNew.type === "Shakes"        
+    });
+    
+    items.innerHTML = filterArray.map((itemm,index) => {
+        return renderItem(itemm);  
+    });
+                       
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// arrays.map((array,index) => {
-//     console.log(filterArray);
-// items.innerHTML = filterArray;  
-// });
-
-
-
-
-
-// arrays.map((arrayss)=> {
-//     let filterArray = arrays.filter(function(arrayss) {
-//         return arrayss.category  === 2
-        
-//     })
-//     // items.innerHTML = filterArray;
-//     items.innerHTML=filterArray[index].image;
-// console.log(filterArray);
-// });   
-
-
-
-// var dataString=JSON.stringify(arrays);
-// console.log(dataString);
-// items.innerHTML=dataString;
-
-// items.innerHTML=all_array;
-// items.style.display="none";
-
-// all.addEventListener("click",() => {
-//     items.innerHTML=all_array;
-
-//     items.style.display="block";
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const renderItem = (itemm)=> {
+
+    // var all_array=arrays.map((array) => {
+        // console.log(itemm);
+        const item=document.createElement("div");
+        item.className="item";
+        items.appendChild(item);
     
-// let filterArray = arrays.filter(function(array) {
-//     return array.category  === 2
-//   })
-//   .map(function(array,index) {
-//       console.log(array);
-//       items.innerHTML=array.name;
-//     //   console.log(JSON.stringify(array));
+                const item_image=document.createElement("div");
+                item_image.className="item_image";
+                item.appendChild(item_image);
+    
+                        const img=document.createElement("img");
+                        img.src=itemm.image;
+                        item_image.appendChild(img);
+            
+                const item_details=document.createElement("div");
+                item_details.className="item_details";
+                item.appendChild(item_details);
+        
+                        const name_price=document.createElement("div");
+                        name_price.className="name_price";
+                        item_details.appendChild(name_price);
+        
+                                const item_name=document.createElement("div");
+                                item_name.className="item_name";
+                                name_price.appendChild(item_name);
+    
+                                        const name_textNode=document.createTextNode(itemm.name);
+                                        console.log(itemm.name)
+                                        item_name.appendChild(name_textNode);
+    
+    
+                                const item_price=document.createElement("div");
+                                item_price.className="item_price";
+                                name_price.appendChild(item_price);
+    
+                                        const price_textNode=document.createTextNode(itemm.price);
+                                        console.log(itemm.price)
+                                        item_price.appendChild(price_textNode);
+    
+                        const item_info=document.createElement("div");
+                        item_info.className="item_info";
+                        item_details.appendChild(item_info);
+    
+                                        const info_textNode=document.createTextNode(itemm.info);
+                                        console.log(itemm.info)
+                                        item_info.appendChild(info_textNode);
+    
+    // });
 
-//    return array;
-//   });
-  
-//   let filterOutput = document.createElement('p');
-//   filterOutput.innerHTML = filterArray
+    return;
+}
 
-//   items.appendChild(filterOutput);                                    
-                 
-// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
