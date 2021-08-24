@@ -1,12 +1,10 @@
-/* < >  => {} */
 
 const items=document.querySelector(".items");
-const all=document.getElementById("all"); 
 const breakfast=document.getElementById("breakfast"); 
 const lunch=document.getElementById("lunch"); 
 const shakes=document.getElementById("shakes"); 
  
-const arrays=[
+const menuItems=[
     {
         id:1,
         type:"Breakfast",
@@ -14,7 +12,6 @@ const arrays=[
         name:'Buttermilk Pancakres1',
         price:'$15.99',
         info:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nibh, tristique et tincidunt non, tincidunt ut est. Integer iaculis odio erat.", 
-
     },
     {
         id:2,
@@ -32,7 +29,6 @@ const arrays=[
         name:'Buttermilk Pancakres3',
         price:'$15.99',
         info:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nibh, tristique et tincidunt non, tincidunt ut est. Integer iaculis odio erat.", 
-
     },
     {
         id:4,
@@ -41,7 +37,6 @@ const arrays=[
         name:'Buttermilk Pancakres4',
         price:'$15.99',
         info:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nibh, tristique et tincidunt non, tincidunt ut est. Integer iaculis odio erat.", 
-
     },
     {
         id:5,
@@ -50,35 +45,20 @@ const arrays=[
         name:'Buttermilk Pancakres5',
         price:'$15.99',
         info:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nibh, tristique et tincidunt non, tincidunt ut est. Integer iaculis odio erat.", 
-
     },
     {
         id:6,
         type:"Shakes",
-        image:'images/godzilla.jpeg',
+        image:'images/pancakes.jpeg',
         name:'Buttermilk Pancakres6',
         price:'$15.99',
         info:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nibh, tristique et tincidunt non, tincidunt ut est. Integer iaculis odio erat.", 
-
     }
 ];
 
-all.addEventListener("click",() => {
-                     
-    let filterArray = arrays.filter(function(arrayNew) {    
-        return (arrayNew.type === "Breakfast" &&  "Lunch"  && "Shakes" )         
-    });
-
-    items.innerHTML= filterArray.map((itemm,index) => {                
-        return renderItem(itemm);
-    });
-                
-});  
-
-
 breakfast.addEventListener("click",() => {
                      
-    let filterArray = arrays.filter(function(arrayNew) {    
+    let filterArray = menuItems.filter(function(arrayNew) {    
         return arrayNew.type === "Breakfast"                
     });
 
@@ -89,7 +69,7 @@ breakfast.addEventListener("click",() => {
 });  
 lunch.addEventListener("click",() => {
     
-    let filterArray = arrays.filter(function(arrayNew) {    
+    let filterArray = menuItems.filter(function(arrayNew) {    
         return arrayNew.type === "Lunch"        
     });
     
@@ -101,7 +81,7 @@ lunch.addEventListener("click",() => {
 
 shakes.addEventListener("click",() => {
 
-    let filterArray = arrays.filter(function(arrayNew) {    
+    let filterArray = menuItems.filter(function(arrayNew) {    
         return arrayNew.type === "Shakes"        
     });
     
@@ -113,56 +93,19 @@ shakes.addEventListener("click",() => {
 
 const renderItem = (itemm)=> {
 
-    // var all_array=arrays.map((array) => {
-        // console.log(itemm);
-        const item=document.createElement("div");
-        item.className="item";
-        items.appendChild(item);
+       return `<div class="item">
+                    <div class="item_image">
+                        <img src="${itemm.image}" alt="">
+                    </div>
+                    <div class="item_details">
+                        <div class="name_price">
+                            <div class="item_name">${itemm.name}</div>
+                            <div class="item_price">${itemm.price}</div>
+                        </div>
+                        <div class="item_info">${itemm.info}</div>
+                    </div> 
+                </div>`
     
-                const item_image=document.createElement("div");
-                item_image.className="item_image";
-                item.appendChild(item_image);
-    
-                        const img=document.createElement("img");
-                        img.src=itemm.image;
-                        item_image.appendChild(img);
-            
-                const item_details=document.createElement("div");
-                item_details.className="item_details";
-                item.appendChild(item_details);
-        
-                        const name_price=document.createElement("div");
-                        name_price.className="name_price";
-                        item_details.appendChild(name_price);
-        
-                                const item_name=document.createElement("div");
-                                item_name.className="item_name";
-                                name_price.appendChild(item_name);
-    
-                                        const name_textNode=document.createTextNode(itemm.name);
-                                        console.log(itemm.name)
-                                        item_name.appendChild(name_textNode);
-    
-    
-                                const item_price=document.createElement("div");
-                                item_price.className="item_price";
-                                name_price.appendChild(item_price);
-    
-                                        const price_textNode=document.createTextNode(itemm.price);
-                                        console.log(itemm.price)
-                                        item_price.appendChild(price_textNode);
-    
-                        const item_info=document.createElement("div");
-                        item_info.className="item_info";
-                        item_details.appendChild(item_info);
-    
-                                        const info_textNode=document.createTextNode(itemm.info);
-                                        console.log(itemm.info)
-                                        item_info.appendChild(info_textNode);
-    
-    // });
-
-    return;
 }
 
 
